@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-cyan: #00ffff;
+  --color-neon-magenta: #ff00ff;
+  --color-neon-purple: #b026ff;
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-space-black: #050510;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-space-black);
+    color: #ffffff;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom animated background layer */
+  .bg-neon-mesh {
+    background: radial-gradient(circle at 15% 50%, rgba(0, 255, 255, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 0, 255, 0.05), transparent 25%);
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-glass-bg backdrop-blur-md border border-glass-border shadow-xl shadow-black/50 rounded-2xl;
+  }
+  
+  .neon-text-cyan {
+    text-shadow: 0 0 10px var(--color-neon-cyan);
+  }
+  
+  .neon-text-magenta {
+    text-shadow: 0 0 10px var(--color-neon-magenta);
+  }
+}
+
+/* Bypass Google Maps SDK Dev Error Overlays locally */
+.gm-err-container,
+.gm-err-content,
+.gm-err-icon,
+.dismissButton {
+  display: none !important;
+}
